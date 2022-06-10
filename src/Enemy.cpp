@@ -9,8 +9,8 @@ Enemy::Enemy(float Pos_x, float Pos_Y) {
 Enemy::~Enemy() {}
 
 void Enemy::InitShape() {
-  this->Enemy_Shape_.setRadius(rand() % 20 + 20);
-  this->Enemy_Shape_.setPointCount(rand() % 20 + 20);
+  this->Enemy_Shape_.setRadius(this->Point_Count_ * 5);
+  this->Enemy_Shape_.setPointCount(this->Point_Count_);
   this->Enemy_Shape_.setFillColor(
       sf::Color(rand() % 255 + 1, rand() % 255 + 1, rand() % 255 + 1, 255));
 }
@@ -31,6 +31,7 @@ const sf::FloatRect Enemy::GetBounds() const {
 
 const int &Enemy::GetPoints() const { return this->Points_; }
 
+void Enemy::SetDamage() { this->Damage_ = this->Point_Count_; }
 const int &Enemy::GetDamage() const { return this->Damage_; }
 
 void Enemy::Update() { this->Enemy_Shape_.move(0.f, this->Enemy_Speed_); }
