@@ -6,7 +6,9 @@
 class Enemy {
 private:
   sf::CircleShape Enemy_Shape_;
+
   unsigned Point_Count_;
+
   int Type_;
   int Hp_;
   int Hp_Max_;
@@ -23,6 +25,8 @@ public:
 
   const sf::FloatRect GetBounds() const;
   const int &GetPoints() const;
+
+  void SetDamage();
   const int &GetDamage() const;
 
   void Update();
