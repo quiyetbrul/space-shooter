@@ -5,7 +5,7 @@
 
 class Player {
 private:
-  sf::Texture Texture_;
+  sf::Texture Player_Texture_;
   sf::Sprite Player_Sprite_;
 
   float Player_Speed_;
@@ -29,6 +29,9 @@ public:
   const int &GetHp() const;
   const int &GetHpMax() const;
 
+  void SetPosition(const sf::Vector2f position);
+  void SetPosition(const float X, const float Y);
+
   void SetHp(const int hp);
   void LoseHp(const int value);
 
@@ -39,6 +42,8 @@ public:
   void Render(sf::RenderTarget &target);
 
   void Move(const float Dir_X, const float Dir_Y);
+
+  void UpdateAttack();
 };
 
 #endif // PLAYER_H

@@ -28,6 +28,14 @@ void Player::AttackCooldown() {
   }
 }
 
+void Player::SetPosition(const sf::Vector2f position) {
+  this->Player_Sprite_.setPosition(position);
+}
+
+void Player::SetPosition(const float X, const float Y) {
+  this->Player_Sprite_.setPosition(X, Y);
+}
+
 void Player::SetHp(const int Hp) { this->Hp_ = Hp; }
 
 void Player::LoseHp(const int Value) {
@@ -54,18 +62,24 @@ void Player::InitVariables() {
 }
 
 void Player::InitTexture() {
-  if (!this->Texture_.loadFromFile("textures/ship.png")) {
+  if (!this->Player_Texture_.loadFromFile("assets/textures/ship.png")) {
     std::cerr << "ERROR::PLAYER::INITTEXTURE:: failed to load ship.png"
               << std::endl;
   }
 }
 
 void Player::InitSprite() {
-  this->Player_Sprite_.setTexture(this->Texture_);
+  this->Player_Sprite_.setTexture(this->Player_Texture_);
   this->Player_Sprite_.scale(0.1f, 0.1f);
 }
 
 void Player::Update() { this->AttackCooldown(); }
+
+void Player::UpdateAttack() {
+  if(this->IsAttackCooldown() < this->Attack_Cooldown_Max_) {
+    this->Attack_Cooldown_ += 0.5f;
+  }
+}
 
 void Player::Render(sf::RenderTarget &target) {
   target.draw(this->Player_Sprite_);
