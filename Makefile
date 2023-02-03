@@ -6,7 +6,8 @@
 CC = clang++
 CXXFLAGS = -std=c++20 -Wall
 LDFLAGS = -I include -l sfml-graphics -l sfml-window -l sfml-system
-# -L lib was removed in LDFLAGS because it is not needed.
+# -I /usr/local/include ## for mac intel
+# -I /opt/homebrew/include ## for mac arm
 
 # Makefile settings - Can be customized.
 APPNAME = space_shooters
